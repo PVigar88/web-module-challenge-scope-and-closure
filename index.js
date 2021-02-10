@@ -28,11 +28,17 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+
+  counter1 returns a function and that function has an incrementing counter. counter2 is a function that returns the count 
   
   2. Which of the two uses a closure? How can you tell?
-  
+
+    Counter1's closure is created by referencing the count in the counterMaker() function. giving it a lexical scope. 
+    
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+      if you just need to count a single variable then counter2 works perfectly fine.  However, if you want to be able to counter multiple things independantly of one another then counter1 is the better option.
 */
 
 // counter1 code
@@ -62,8 +68,9 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+/*Code Here*/
+  return Math.floor(Math.random() * 2);
 }
 
 
@@ -81,8 +88,16 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(callbackInning, inningNumber){
+/*Code Here*/
+  let scoreHomeAway = { "Home": 0, "Away": 0 };
+
+  for (i = 0; i < inningNumber; i++){scoreHomeAway.forEach(inningHalf => inningHalf += callbackInning);
+    scoreHomeAway.Home += callbackInning;
+    scoreHomeAway.Away += callbackInning;
+
+  }
+  return scoreHomeAway;
 }
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
