@@ -70,7 +70,9 @@ NOTE: This will be a callback function for the tasks below
 
 function inning(){
 /*Code Here*/
-  return Math.floor(Math.random() * 2);
+  let inningScore = Math.floor(Math.random() * Math.floor(3));
+  // console.log(inningScore);
+  return inningScore;
 }
 
 
@@ -90,23 +92,28 @@ Use the finalScore function below to do the following:
 
 function finalScore(callbackInning, inningNumber){
 /*Code Here*/
-  let scoreHomeAway = { "Home": 0, "Away": 0 };
+  let scoreHomeAway = {"Home": 0,"Away": 0 };
 
-  for (i = 0; i < inningNumber; i++){scoreHomeAway.forEach(inningHalf => inningHalf += callbackInning);
-    scoreHomeAway.Home += callbackInning;
-    scoreHomeAway.Away += callbackInning;
+  for (let i = 0; i < inningNumber; i++){
+    scoreHomeAway.Home += callbackInning();
+    scoreHomeAway.Away += callbackInning();
 
   }
   return scoreHomeAway;
 }
+console.log(finalScore(inning, 9));
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
   1. Receive a callback function - you will pass in the inning function from task 2 as your argument 
   2. Return an object with a score for home and a score for away that populates from invoking the inning callback function */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(callbackInning) {
+/*Your Code Here */
+  let scoreInning = {"Home": 0,"Away": 0};
+  scoreInning.Home += callbackInning();
+  scoreInning.Away += callbackInning();
+  return scoreInning;
 }
 
 
